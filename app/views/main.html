@@ -1,0 +1,94 @@
+<!-- used to recursively build tree -->
+<script type="text/ng-template" id="tree-renderer.html">
+  <span ng-click="term.show = !term.show"
+        ng-class="term.show ? 'glyphicon glyphicon-chevron-down' : 'glyphicon glyphicon-chevron-right';"
+        ng-show="hasChildren(term)"
+        aria-hidden="true"
+        accordion close-others="true"></span> 
+  <span class="glyphicon glyphicon-minus"
+        ng-hide="hasChildren(term)"
+        aria-hidden="true"
+        accordion close-others="true"></span> 
+  <span ng-click="display_detail(term)" >{{term.label}}</span>
+  <ul ng-show="term.show" ng-init="showChildren(term)">
+    <li ng-repeat="term in term.children" ng-include="'tree-renderer.html'"></li>
+  </ul>
+</script>
+<!-- main container for page -->
+<div class="container">
+  <br/>
+  <div class="panel panel-primary" id="option1Panel" >
+    <div class="panel-heading clearfix">FAIR-o-meter
+      <div class="pull-right">
+      </div>
+    </div>
+    <table id='optionTable' datatable="ng" class="table table-striped table-bordered" dt-options="dtOptions" dt-columns="dtColumns">
+      <thead>
+        <tr>
+          <th>Attribute </th>
+          <th>Software </th>
+          <th >Datasets </th>
+          <th >Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>DOI</td>
+          <td>{{sw_data.sw_with_doi}} ({{sw_data.sw_with_doi_percent}}%)</td>
+          <td>{{ds_data.ds_with_doi}} ({{ds_data.ds_with_doi_percent}}%)</td>
+          <td>{{totals.doi_total}} ({{totals.doi_total_percent}}%)</td>
+        </tr>
+        <tr>
+          <td>Any identifier</td>
+          <td>{{sw_data.sw_with_any_identifier}} ({{sw_data.sw_with_any_identifier_percent}}%)</td>
+          <td>{{ds_data.ds_with_any_identifier}} ({{ds_data.ds_with_any_identifier_percent}}%)</td>
+          <td>{{totals.any_identifier_total}} ({{totals.any_identifier_total_percent}}%)</td>
+        </tr>
+        <tr>
+          <td>Common format</td>
+          <td>{{sw_data.sw_with_common_format}} ({{sw_data.sw_with_common_format_percent}}%)</td>
+          <td>{{ds_data.ds_with_common_format}} ({{ds_data.ds_with_common_format_percent}}%)</td>
+          <td>{{totals.common_format_total}} ({{totals.common_format_total_percent}}%)</td>
+        </tr>
+        <tr>
+          <td>Input format</td>
+          <td>{{sw_data.sw_with_input}} ({{sw_data.sw_with_input_percent}}%)</td>
+          <td>N/A</td>
+          <td>{{totals.input_total}}</td>
+        </tr>
+        <tr>
+          <td>Output format</td>
+          <td>{{sw_data.sw_with_output}} ({{sw_data.sw_with_output_percent}}%)</td>
+          <td>N/A</td>
+          <td>{{totals.output_total}}</td>
+        </tr>
+        <tr>
+          <td>Both</td>
+         <td>{{sw_data.sw_with_io}} ({{sw_data.sw_with_io_percent}}%)</td>
+          <td>N/A</td>
+          <td>{{totals.io_total}}</td>
+        </tr>
+        <tr>
+          <td>Reusable license</td>
+          <td>{{sw_data.sw_with_reusable_lic}} ({{sw_data.sw_with_reusable_lic_percent}}%)</td>
+          <td>{{ds_data.ds_with_reusable_lic}}</td>
+          <td>{{totals.reusable_lic_total}} ({{totals.reusable_lic_total_percent}}%)</td>
+        </tr>
+        <tr>
+          <td>Common format and reusable license</td>
+          <td>{{sw_data.sw_with_common_lic}} ({{sw_data.sw_with_common_lic_percent}}%)</td>
+          <td>{{ds_data.ds_with_common_lic}}</td>
+          <td>{{totals.common_lic_total}} ({{totals.common_lic_total_percent}}%)</td>
+          
+        </tr>
+        <tr>
+          <td>Total</td>
+          <td>{{sw_data.total_sw}} (100%)</td>
+          <td>{{ds_data.total_ds}} (100%)</td>
+          <td>{{totals.total}} (100%)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

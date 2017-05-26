@@ -1,0 +1,51 @@
+.divider-vertical {
+  height: 50px;
+  margin: 0 15px;
+  border-left: 1px solid gray;
+  opacity: 0.5;
+}
+
+body {
+  padding: 0;
+}
+
+.tree {
+  white-space: nowrap;
+}
+
+.tree  ul {
+  list-style: none;
+}
+
+.tree li {
+  cursor: pointer;
+}
+
+.chosenTerms {
+  margin-top: 20px;
+  max-height: 200px;
+  overflow: auto;
+}
+
+.chosenTerms ul {
+  list-style: none;
+}
+
+.chosenTerms li {
+  cursor: pointer;
+}
+
+#resultsPanel {
+  max-height: 1064px;
+  overflow: auto;
+}
+.more-padding-on-right {
+  padding-right: 10px;
+}
+
+.glyphicon-remove, .nav, .pagination, .carousel, .panel-title a, #resultTable tr { cursor: pointer; }
+
+.modal-body {
+  overflow-x: auto  
+}
+
