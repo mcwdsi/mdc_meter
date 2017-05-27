@@ -42,29 +42,29 @@ angular.module('mdcSearch')
         item["common_format_total"] = parseInt(sw.sw_with_common_format) +parseInt(ds.ds_with_common_format)
         item["reusable_lic_total"] = parseInt(sw.sw_with_reusable_lic) +parseInt(ds.ds_with_reusable_lic)        
         item["common_lic_total"] = parseInt(sw.sw_with_common_lic) +parseInt(ds.ds_with_common_lic)
-        item["input_total"] = sw.sw_with_input + " (N/A)"
-        item["output_total"] = sw.sw_with_output + " (N/A)"
-        item["io_total"] = sw.sw_with_io+ " (N/A)"
+        item["input_total"] = sw.sw_with_input + " (No applicable)"
+        item["output_total"] = sw.sw_with_output + " (No applicable)"
+        item["io_total"] = sw.sw_with_io+ " (No applicable)"
         //now calculate percentages
-        item["doi_total_percent"] = (item.doi_total/item.total * 100).toFixed(2)
-        item["any_identifier_total_percent"] = (item.any_identifier_total/item.total * 100).toFixed(2)
-        item["common_format_total_percent"] = (item.common_format_total/item.total * 100).toFixed(2)
-        item["reusable_lic_total_percent"] = (item.reusable_lic_total/item.total * 100).toFixed(2)
-        item["common_lic_total_percent"] = (item.common_lic_total/item.total * 100).toFixed(2)
+        item["doi_total_percent"] = (item.doi_total/item.total * 100).toFixed(0)
+        item["any_identifier_total_percent"] = (item.any_identifier_total/item.total * 100).toFixed(0)
+        item["common_format_total_percent"] = (item.common_format_total/item.total * 100).toFixed(0)
+        item["reusable_lic_total_percent"] = (item.reusable_lic_total/item.total * 100).toFixed(0)
+        item["common_lic_total_percent"] = (item.common_lic_total/item.total * 100).toFixed(0)
 
         return item;
     }
 
     function process_software(data){
     	var item = data;
-        item["sw_with_doi_percent"] = (data.sw_with_doi/data.total_sw * 100).toFixed(2)
-        item["sw_with_common_format_percent"] = (data.sw_with_common_format/data.total_sw* 100).toFixed(2)
-        item["sw_with_common_lic_percent"] = (data.sw_with_common_lic/data.total_sw* 100).toFixed(2)
-        item["sw_with_input_percent"] = (data.sw_with_input/data.total_sw* 100).toFixed(2)
-        item["sw_with_io_percent"] = (data.sw_with_io/data.total_sw* 100).toFixed(2)
-        item["sw_with_output_percent"] = (data.sw_with_output/data.total_sw* 100).toFixed(2)
-        item["sw_with_reusable_lic_percent"] = (data.sw_with_reusable_lic/data.total_sw* 100).toFixed(2)
-        item["sw_with_any_identifier_percent"] = (data.sw_with_any_identifier/data.total_sw* 100).toFixed(2)
+        item["sw_with_doi_percent"] = (data.sw_with_doi/data.total_sw * 100).toFixed(0)
+        item["sw_with_common_format_percent"] = (data.sw_with_common_format/data.total_sw* 100).toFixed(0)
+        item["sw_with_common_lic_percent"] = (data.sw_with_common_lic/data.total_sw* 100).toFixed(0)
+        item["sw_with_input_percent"] = (data.sw_with_input/data.total_sw* 100).toFixed(0)
+        item["sw_with_io_percent"] = (data.sw_with_io/data.total_sw* 100).toFixed(0)
+        item["sw_with_output_percent"] = (data.sw_with_output/data.total_sw* 100).toFixed(0)
+        item["sw_with_reusable_lic_percent"] = (data.sw_with_reusable_lic/data.total_sw* 100).toFixed(0)
+        item["sw_with_any_identifier_percent"] = (data.sw_with_any_identifier/data.total_sw* 100).toFixed(0)
     	return item;
     }
 
@@ -74,19 +74,17 @@ angular.module('mdcSearch')
             item.ds_with_common_format = 0
         }
         else {
-            item["ds_with_common_format_percent"] = (data.ds_with_common_format/data.total_ds *100).toFixed(2)
+            item["ds_with_common_format_percent"] = (data.ds_with_common_format/data.total_ds *100).toFixed(0)
         }
         if(data.ds_with_reusable_lic == 0){
             item.ds_with_reusable_lic = 0
         }
         else {
-            item["ds_with_reusable_lic_percent"] = (data.ds_with_reusable_lic/data.total_ds *100).toFixed(2)
+            item["ds_with_reusable_lic_percent"] = (data.ds_with_reusable_lic/data.total_ds *100).toFixed(0)
         }
-        item["ds_with_any_identifier_percent"] = (data.ds_with_any_identifier/data.total_ds *100).toFixed(2)
-        item["ds_with_common_lic_percent"] = (data.ds_with_common_lic/data.total_ds *100).toFixed(2)
-        item["ds_with_doi_percent"] = (data.ds_with_doi/data.total_ds *100).toFixed(2)
-        
-       console.log(data)
+        item["ds_with_any_identifier_percent"] = (data.ds_with_any_identifier/data.total_ds *100).toFixed(0)
+        item["ds_with_common_lic_percent"] = (data.ds_with_common_lic/data.total_ds *100).toFixed(0)
+        item["ds_with_doi_percent"] = (data.ds_with_doi/data.total_ds *100).toFixed(0)
         return item;
     }
 
